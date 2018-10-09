@@ -11,4 +11,10 @@ class Helpers
       return false
     end
   end
+
+  def self.redirect_if_not_logged_in(session_hash)
+    if !logged_in?(session_hash)
+      redirect "/login"
+    end
+  end
 end
