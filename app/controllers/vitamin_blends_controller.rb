@@ -19,4 +19,13 @@ class VitaminBlendsController < ApplicationController
     vitamin = VitaminBlend.create(contents: params[:contents], user_id: session[:user_id])
     redirect '/vitamins'
   end
+
+  get '/vitamins/:id' do
+    if !Helpers.logged_in?(session)
+      redirect '/login'
+    end
+
+    @vitamin = VitaminBlend.find(params[:id])
+    erb :'users/show'
+  end
 end

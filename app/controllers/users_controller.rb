@@ -38,8 +38,8 @@ class UsersController < ApplicationController
   end
 
   get '/users/:id' do
-    if !logged_in?
-      redirect '/vitamins'
+    if !Helpers.logged_in?(session)
+      redirect '/login'
     end
 
     @user = User.find(params[:id])
