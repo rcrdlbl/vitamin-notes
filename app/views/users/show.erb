@@ -1,0 +1,6 @@
+<h1><%= @user.username %></h1>
+<h3>This User's Vitamins:</h3>
+<% @user.vitamin_blends.each do |vitamin_blend| %>
+<p><a href="/vitamins/<%= vitamin_blend.id %>"><%= vitamin_blend.contents %></a></p>
+<% end %>
+<p><a href="/vitamins">Main Page</a></p>
