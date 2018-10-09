@@ -1,0 +1,4 @@
+<h2>All Vitamin Blends:</h2>
+<% @vitamins.each do |vitamin_blend| %>
+<p><a href="/vitamins/<%= vitamin_blend.id %>"><%= vitamin_blend.contents %></a></p>
+<% end %>
