@@ -26,6 +26,6 @@ class VitaminBlendsController < ApplicationController
     end
 
     @vitamin = VitaminBlend.find(params[:id])
-    erb :'users/show'
+    erb :'vitamin_blends/show'
   end
 end
