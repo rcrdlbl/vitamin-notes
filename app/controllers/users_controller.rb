@@ -43,10 +43,19 @@ class UsersController < ApplicationController
     end
 
     @user = User.find(params[:id])
-    if !@user.nil? && @user == current_user
+    if !@user.nil? && @user == Helpers.current_user(session)
       erb :'users/show'
     else
       redirect '/vitamins'
+    end
+  end
+
+  get '/logout' do
+    if !Helpers.logged_in?(session)
+      redirect '/login'
+    else
+      session.clear
+      redirect '/'
     end
   end
 
