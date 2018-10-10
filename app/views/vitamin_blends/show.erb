@@ -1,4 +1,5 @@
 <h4><%= @vitamin.contents %></h4>
+<h6><a href="/vitamins/<%= @vitamin.id %>/edit">Edit</a></h6>
 <h5>Notes:</h5>
 <% @vitamin.notes.each do |note| %>
   <p><%= note.content %></p>

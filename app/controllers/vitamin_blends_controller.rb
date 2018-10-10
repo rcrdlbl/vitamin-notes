@@ -26,7 +26,6 @@ class VitaminBlendsController < ApplicationController
     end
 
     @vitamin = VitaminBlend.find(params[:id])
-    # binding.pry
     erb :'vitamin_blends/show'
   end
 
