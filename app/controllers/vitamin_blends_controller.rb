@@ -28,4 +28,13 @@ class VitaminBlendsController < ApplicationController
     @vitamin = VitaminBlend.find(params[:id])
     erb :'vitamin_blends/show'
   end
+
+  get '/vitamins/:id/edit' do
+        if !Helpers.logged_in?(session)
+      redirect '/login'
+    end
+
+    @vitamin = VitaminBlend.find(params[:id])
+    erb :'vitamin_blends/edit'
+  end
 end
