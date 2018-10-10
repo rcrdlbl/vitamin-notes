@@ -30,11 +30,22 @@ class VitaminBlendsController < ApplicationController
   end
 
   get '/vitamins/:id/edit' do
-        if !Helpers.logged_in?(session)
+    if !Helpers.logged_in?(session)
       redirect '/login'
     end
 
     @vitamin = VitaminBlend.find(params[:id])
     erb :'vitamin_blends/edit'
+  end
+
+  patch '/vitamins/:id' do
+    @vitamin = VitaminBlend.find(params[:id])
+    if params[:contents] != "" && session[:user_id] == @vitamin.user.id
+      @vitamin.contents = params[:contents]
+      @vitamin.save
+      redirect to '/vitamins'
+    else
+      redirect to "/vitamins/#{params[:id]}"
+    end
   end
 end
