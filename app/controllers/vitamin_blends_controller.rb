@@ -49,7 +49,7 @@ class VitaminBlendsController < ApplicationController
     end
   end
 
-  delete '/vitamins/:id' do
+  delete '/vitamins/:id/delete' do
     @vitamin = VitaminBlend.find(params[:id])
     if session[:user_id] == @vitamin.user.id
       @vitamin.delete

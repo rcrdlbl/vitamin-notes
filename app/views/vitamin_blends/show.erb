@@ -7,3 +7,7 @@
 <% end %>
 
 <a href="/vitamins/<%= @vitamin.id %>/notes/new">New Note</a>
+<form class="" action="/vitamins/<%= @vitamin.id %>/delete" method="post">
+  <input type="hidden" id="hidden" name="_method" value="delete">
+  <input type="submit" name="" value="Delete Vitamin">
+</form>
