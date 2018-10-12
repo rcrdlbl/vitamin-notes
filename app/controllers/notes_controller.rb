@@ -7,7 +7,7 @@ class NotesController < ApplicationController
     erb :'notes/new'
   end
 
-  post '/vitamins/:id/notes' do
+  post '/vitamins/:id' do
     if !Helpers.logged_in?(session)
       redirect '/login'
     end
