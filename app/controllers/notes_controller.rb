@@ -16,4 +16,12 @@ class NotesController < ApplicationController
     note = Note.create(content: params[:content], vitamin_blend_id: @vitamin.id, user_id: session[:user_id])
     redirect to "/vitamins/#{params[:id]}"
   end
+
+  get '/notes/:id/edit' do
+    @note = Note.find_by(id: params[:id])
+    if !Helpers.logged_in?(session)
+      redirect '/login'
+    end
+    erb :'notes/edit'
+  end
 end

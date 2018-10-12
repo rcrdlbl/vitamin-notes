@@ -4,6 +4,11 @@
 <% @vitamin.notes.each do |note| %>
   <p><%= note.content %></p>
   <h6>-<%= note.user.username %></h6>
+  <h6><a href="/notes/<%= note.id %>">Edit Note</a></h6>
+  <form class="" action="index.html" method="post">
+    <input type="hidden" id="hidden" name="_method" value="delete">
+    <input type="text" name="" value="Delete Note">
+  </form>
 <% end %>
 
 <a href="/vitamins/<%= @vitamin.id %>/notes/new">New Note</a>
