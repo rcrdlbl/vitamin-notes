@@ -30,10 +30,19 @@ class NotesController < ApplicationController
     if params[:content] != "" && session[:user_id] == @note.user.id
       @note.content = params[:content]
       @note.save
-      redirect to "/vitamins/#{params[:id]}"
+      redirect to "/vitamins/#{@note.vitamin_blend.id}"
     else
-      redirect to "/vitamins/#{params[:id]}"
+      redirect to "/vitamins/#{@note.vitamin_blend.id}"
     end
   end
 
+  delete '/notes/:id/delete' do
+    @note = Note.find(params[:id])
+    if session[:user_id] == @note.user.id
+      @note.delete
+      redirect to '/vitamins'
+    else
+      redirect to "/vitamins/#{@note.vitamin_blend.id}"
+    end
+  end
 end
