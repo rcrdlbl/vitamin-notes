@@ -6,4 +6,14 @@ class NotesController < ApplicationController
     end
     erb :'notes/new'
   end
+
+  post '/vitamins/:id/notes' do
+    if !Helpers.logged_in?(session)
+      redirect '/login'
+    end
+
+    @vitamin = VitaminBlend.find(params[:id])
+    note = Note.create(content: params[:content], vitamin_blend_id: @vitamin.id, user_id: session[:user_id])
+    redirect to "/vitamins/#{params[:id]}"
+  end
 end
