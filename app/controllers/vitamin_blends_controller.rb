@@ -48,4 +48,14 @@ class VitaminBlendsController < ApplicationController
       redirect to "/vitamins/#{params[:id]}"
     end
   end
+
+  delete '/vitamins/:id' do
+    @vitamin = VitaminBlend.find(params[:id])
+    if session[:user_id] == @vitamin.user.id
+      @vitamin.delete
+      redirect to '/vitamins'
+    else
+      redirect to "/vitamins/#{params[:id]}"
+    end
+  end
 end
