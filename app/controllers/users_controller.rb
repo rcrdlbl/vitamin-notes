@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if params[:username] != "" && params[:password] != ""
+    if params[:username] != "" && params[:password] != "" && User.find_by(username: params[:username])
       user = User.create(username: params[:username], password: params[:password])
       session[:user_id] = user.id
       redirect to '/vitamins'
