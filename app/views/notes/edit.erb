@@ -1,6 +1,6 @@
 <form class="" action="/notes/<%= @note.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <p>Edit Note:</p>
-  <textarea name="contents" rows="8" cols="80"><%= @note.contents %></textarea>
+  <textarea name="content" rows="8" cols="80"><%= @note.contents %></textarea>
   <input type="submit" name="" value="Edit">
 </form>

@@ -24,4 +24,16 @@ class NotesController < ApplicationController
     end
     erb :'notes/edit'
   end
+
+  patch '/notes/:id' do
+    @note = Note.find_by(id: params[:id])
+    if params[:content] != "" && session[:user_id] == @note.user.id
+      @note.content = params[:content]
+      @note.save
+      redirect to "/vitamins/#{params[:id]}"
+    else
+      redirect to "/vitamins/#{params[:id]}"
+    end
+  end
+
 end
